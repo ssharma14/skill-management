@@ -1,0 +1,11 @@
+skill_selector:
+  css:
+    theme:
+      css/skill-selector.css: {}
+  js:
+    https://unpkg.com/react@18/umd/react.production.min.js: { type: external, attributes: { crossorigin: anonymous } }
+    https://unpkg.com/react-dom@18/umd/react-dom.production.min.js: { type: external, attributes: { crossorigin: anonymous } }
+    js/dist/skill_selector_app.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

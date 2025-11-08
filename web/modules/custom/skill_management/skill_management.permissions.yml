@@ -1,0 +1,8 @@
+administer skills:
+  title: 'Administer skills'
+  description: 'Create, edit and delete skill entities.'
+  restrict: TRUE
+
+manage user skills:
+  title: 'Manage user skills'
+  description: 'Add and manage skills for users.'

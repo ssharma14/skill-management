@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains skill_management.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function skill_management_theme($existing, $type, $theme, $path) {
+  return [
+    'page__skills' => [
+      'template' => 'page--skills',
+      'base hook' => 'page',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function skill_management_preprocess_page(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getRouteName() == 'skill_management.main') {
+    $variables['#attached']['library'][] = 'skill_management/skill_selector';
+  }
+}

@@ -1,0 +1,5 @@
+skill.add:
+  route_name: entity.skill.add_form
+  title: 'Add Skill'
+  appears_on:
+    - entity.skill.collection

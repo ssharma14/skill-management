@@ -1,0 +1,33 @@
+skill_management.main:
+  path: '/skills'
+  defaults:
+    _controller: '\Drupal\skill_management\Controller\SkillPageController::main'
+    _title: 'Skill Management'
+  requirements:
+    _permission: 'access content'
+
+skill_management.api.search:
+  path: '/api/skills'
+  defaults:
+    _controller: '\Drupal\skill_management\Controller\SkillApiController::search'
+    _title: 'Skill search API'
+  requirements:
+    _permission: 'access content'
+
+skill_management.api.get_user_skills:
+  path: '/api/user-skills'
+  defaults:
+    _controller: '\Drupal\skill_management\Controller\SkillApiController::getUserSkills'
+    _title: 'Get user skills API'
+  requirements:
+    _access: 'TRUE'
+
+skill_management.api.save_user_skills:
+  path: '/api/user-skills/save'
+  defaults:
+    _controller: '\Drupal\skill_management\Controller\SkillApiController::saveUserSkills'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE

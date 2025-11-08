@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    background: #f5f5f5 !important;
+    background-image: none !important;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#page-wrapper {
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.skill-page-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.skill-page-wrapper h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.skill-page-wrapper .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.skill-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-input {
+    position: relative;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.search-input input:focus {
+    outline: 2px solid black;
+    outline-offset: 2px;
+    border-color: #e0e0e0;
+}
+
+.results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.results:empty {
+    display: none;
+}
+
+.results li {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.results li:hover,
+.results li.focused {
+    background-color: #f5f5ff;
+}
+
+.results li small {
+    color: #999;
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.selected-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
+}
+
+.card-category {
+    font-weight: normal;
+    color: #243e50;
+    font-size: 14px;
+}
+
+.card-level {
+    font-weight: normal;
+    color: #999;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.saved-experience-text {
+    font-size: 14px;
+    color: #2e7d32;
+    margin-top: 4px;
+}
+
+.saved-experience-text strong {
+    color: #1b5e20;
+    font-weight: 700;
+}
+
+.card-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.card-controls label {
+    font-size: 13px;
+    color: #666;
+    margin-right: 4px;
+    font-weight: 500;
+}
+
+.card-controls input[type="number"] {
+    width: 15%;
+    height: 36px;
+    padding: 2px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.card-controls select {
+    width: 20%;
+    height: 36px;
+    padding: 2px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.remove-btn {
+    background: #ff6b6b;
+    color: white;
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+.remove-btn:hover {
+    background: #ff5252;
+}
+
+.add-experience-btn {
+    background: #667eea;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.add-experience-btn:hover {
+    background: #5568d3;
+}
+
+.hide-experience-btn {
+    background: #6c757d;
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.hide-experience-btn:hover {
+    background: #5a6268;
+}
+
+.save-experience-btn {
+    background: #243e50;
+    color: white;
+    height: 36px;
+    padding: 2px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.save-experience-btn:hover {
+    background: #1a2d3a;
+}
+
+.cancel-experience-btn {
+    background: transparent;
+    color: #243e50;
+    height: 36px;
+    padding: 2px 16px;
+    font-size: 14px;
+    border: 2px solid #243e50;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel-experience-btn:hover {
+    background: #243e50;
+    color: white;
+}
+
+.save-btn {
+    background: #667eea;
+    color: white;
+    padding: 14px 32px;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.save-btn:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4caf50;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+}
+
+.notification-error {
+    background: #f44336;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

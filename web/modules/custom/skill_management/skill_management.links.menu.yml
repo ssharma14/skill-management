@@ -1,0 +1,6 @@
+skill_management.admin:
+  title: 'Skills'
+  description: 'Manage skills'
+  parent: system.admin_content
+  route_name: entity.skill.collection
+  weight: 100
