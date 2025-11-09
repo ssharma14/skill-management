@@ -4,7 +4,7 @@ A Drupal-based skill management system that allows users to track and manage the
 
 ## Overview
 
-This project provides a comprehensive skill management solution built on Drupal 10.5. It enables users to search, select, and track their skills along with their experience in each skill area. The system automatically calculates proficiency levels based on the experience duration.
+This project provides a comprehensive skill management solution built on Drupal 11.2.7. It enables users to search, select, and track their skills along with their experience in each skill area. The system automatically calculates proficiency levels based on the experience duration.
 
 ## Features
 
@@ -22,8 +22,8 @@ This project provides a comprehensive skill management solution built on Drupal 
 
 ## Technical Stack
 
-- **Drupal Version**: 10.5
-- **PHP**: Required for Drupal core and custom module
+- **Drupal Version**: 11.2.7
+- **PHP**: 8.3+ (required for Drupal 11)
 - **Frontend**: React (for the skill selector interface)
 - **Database**: MySQL/MariaDB (standard Drupal database)
 - **Package Manager**: Composer
@@ -157,11 +157,3 @@ After making changes to PHP code or configuration:
 ```bash
 vendor/bin/drush cr
 ```
-
-## License
-
-GPL-2.0-or-later
-
-## Support
-
-For issues or questions, please open an issue in the GitHub repository.
