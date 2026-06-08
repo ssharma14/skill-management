@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { apiUrl } from './apiBase';
 
 export default function SearchInput({ onSelect }) {
   const [q, setQ] = useState('');
@@ -12,7 +13,7 @@ export default function SearchInput({ onSelect }) {
         setResults([]);
         return;
       }
-      fetch(`/api/skills?search=${encodeURIComponent(q)}`)
+      fetch(apiUrl(`api/skills?search=${encodeURIComponent(q)}`))
         .then(r => r.json())
         .then(setResults);
     }, 250);

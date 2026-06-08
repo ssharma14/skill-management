@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchInput from './SearchInput';
+import { apiUrl } from './apiBase';
 
 export default function App({ userId }) {
   const [selected, setSelected] = useState([]);
@@ -9,7 +10,7 @@ export default function App({ userId }) {
   useEffect(() => {
     const loadSavedSkills = async () => {
       try {
-        const response = await fetch(`/api/user-skills?user_id=${userId}`);
+        const response = await fetch(apiUrl(`api/user-skills?user_id=${userId}`));
         if (response.ok) {
           const skills = await response.json();
           // Add showExperience: false to all loaded skills
@@ -100,7 +101,7 @@ export default function App({ userId }) {
     console.log('Saving skill:', payload);
 
     try {
-      const response = await fetch('/api/user-skills/save', {
+      const response = await fetch(apiUrl('api/user-skills/save'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
