@@ -82,19 +82,20 @@ class SkillApiController extends ControllerBase {
 
     $uid = (int) $data['user_id'];
 
-    // Delete existing for user.
-    $existing = \Drupal::entityQuery('user_skill')
-      ->accessCheck(FALSE)
-      ->condition('user_id.target_id', $uid)
-      ->execute();
-    if (!empty($existing)) {
-      $storage = \Drupal::entityTypeManager()->getStorage('user_skill');
-      $ents = $storage->loadMultiple($existing);
-      $storage->delete($ents);
-    }
-
     $storage = \Drupal::entityTypeManager()->getStorage('user_skill');
     foreach ($data['skills'] as $s) {
+      // Upsert: replace only this user's entry for THIS skill, leaving the
+      // user's other saved skills intact. (Previously this deleted ALL of the
+      // user's skills before re-inserting, so saving one skill wiped the rest.)
+      $existing = \Drupal::entityQuery('user_skill')
+        ->accessCheck(FALSE)
+        ->condition('user_id.target_id', $uid)
+        ->condition('skill_id.target_id', $s['id'])
+        ->execute();
+      if (!empty($existing)) {
+        $storage->delete($storage->loadMultiple($existing));
+      }
+
       $entity = $storage->create([
         'experience' => isset($s['experience']) ? (int) $s['experience'] : 0,
         'unit' => isset($s['unit']) ? $s['unit'] : 'years',
